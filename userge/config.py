@@ -10,7 +10,6 @@
 
 from os import environ
 
-import heroku3
 
 from userge import logging
 from .sys_tools import secured_env, secured_str
@@ -39,11 +38,6 @@ MAX_MESSAGE_LENGTH = 4096
 
 FINISHED_PROGRESS_STR = environ.get("FINISHED_PROGRESS_STR")
 UNFINISHED_PROGRESS_STR = environ.get("UNFINISHED_PROGRESS_STR")
-
-HEROKU_API_KEY = secured_env("HEROKU_API_KEY")
-HEROKU_APP_NAME = environ.get("HEROKU_APP_NAME")
-HEROKU_APP = heroku3.from_key(HEROKU_API_KEY).apps()[HEROKU_APP_NAME] \
-    if HEROKU_API_KEY and HEROKU_APP_NAME else None
 
 ASSERT_SINGLE_INSTANCE = environ.get("ASSERT_SINGLE_INSTANCE", '').lower() == "true"
 IGNORE_VERIFIED_CHATS = True
